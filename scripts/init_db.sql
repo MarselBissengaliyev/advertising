@@ -1,0 +1,5 @@
+CREATE DATABASE IF NOT EXISTS advertising;
+
+CREATE USER postgres WITH PASSWORD '';
+
+GRANT ALL PRIVILEGES ON DATABASE advertising TO postgres;
