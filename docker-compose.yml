@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  advetising-app:
+    build: ./
+    command: ./wait-for-postgres.sh db ./advertising
+    ports:
+      - 8000:8000
+    depends_on:
+      - db
+    environment:
+      - DB_PASSWORD=
+
+  db: 
+    restart: always
+    image: postgres:latest
+    hostname: localhost
+    volumes:
+      - ./.database/postgres/data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=qwerty
+    ports:
+      - 5436:5432 
