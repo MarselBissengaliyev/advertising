@@ -1,0 +1,132 @@
+basePath: /
+definitions:
+  handler.errorResponse:
+    properties:
+      message:
+        type: string
+    type: object
+  handler.getAllListsResponse:
+    properties:
+      data:
+        items:
+          $ref: '#/definitions/model.GetAllAdvertsResponse'
+        type: array
+    type: object
+  model.CreateAdvertsBody:
+    properties:
+      description:
+        type: string
+      photos:
+        items:
+          type: string
+        type: array
+      price:
+        type: number
+      title:
+        type: string
+    required:
+    - photos
+    - price
+    - title
+    type: object
+  model.GetAllAdvertsResponse:
+    properties:
+      id:
+        type: integer
+      main_photo:
+        type: string
+      price:
+        type: number
+      title:
+        type: string
+    type: object
+host: localhost:8000
+info:
+  contact:
+    email: marselbisengaliev1@gmail.com
+    name: Marsel Bissengaliyev
+    url: https://t.me/marsel_bisengaliev
+  description: Api Server for Advertising Application
+  title: Advertising API
+  version: "1.0"
+paths:
+  /api/adverts/:
+    get:
+      description: Get all advertising items
+      parameters:
+      - description: Sort
+        format: string
+        in: query
+        name: sort
+        type: string
+      - description: Page
+        format: int
+        in: query
+        name: page
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/handler.getAllListsResponse'
+        default:
+          description: ""
+          schema:
+            $ref: '#/definitions/handler.errorResponse'
+      summary: Get all adverts
+      tags:
+      - adverts
+    post:
+      consumes:
+      - application/json
+      description: Create a new advertising item
+      parameters:
+      - description: Advert details to create
+        in: body
+        name: input
+        required: true
+        schema:
+          $ref: '#/definitions/model.CreateAdvertsBody'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Create a new advert
+      tags:
+      - adverts
+  /api/adverts/{id}:
+    get:
+      description: Get advert by id
+      parameters:
+      - description: Fields to include (comma-separated)
+        format: string
+        in: query
+        name: fields
+        type: string
+      - description: Advert ID
+        format: int
+        in: path
+        name: id
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties: true
+            type: object
+        default:
+          description: ""
+          schema:
+            $ref: '#/definitions/handler.errorResponse'
+      summary: Get advert by id
+      tags:
+      - adverts
+swagger: "2.0"
