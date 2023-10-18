@@ -1,0 +1,8 @@
+CREATE TABLE adverts (
+  id SERIAL PRIMARY KEY,
+  title VARCHAR(255) NOT NULL,
+  description TEXT,
+  photos JSONB,
+  price DECIMAL(10, 2) NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
