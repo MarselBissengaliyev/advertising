@@ -7,7 +7,7 @@ import (
 	"strconv"
 	"strings"
 
-	error_message "github.com/MarselBissengaliyev/advertising/pkg/error_messaage"
+	error_message "github.com/MarselBissengaliyev/advertising/pkg/error_message"
 	"github.com/MarselBissengaliyev/advertising/pkg/model"
 	"github.com/labstack/echo/v4"
 )

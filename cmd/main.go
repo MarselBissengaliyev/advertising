@@ -6,7 +6,7 @@ import (
 	"os/signal"
 	"syscall"
 
-	error_message "github.com/MarselBissengaliyev/advertising/pkg/error_messaage"
+	error_message "github.com/MarselBissengaliyev/advertising/pkg/error_message"
 	"github.com/MarselBissengaliyev/advertising/pkg/handler"
 	"github.com/MarselBissengaliyev/advertising/pkg/model"
 	"github.com/MarselBissengaliyev/advertising/pkg/repository"
